@@ -1,101 +1,69 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #f8fafc;
-    color: #1e293b;
-}
-
-/* FONDO */
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    filter: blur(140px);
-    opacity: 0.35;
-    z-index: -1;
-}
-
-body::before {
-    top: -150px;
-    left: -150px;
-    background: #19a7b3;
-}
-
-body::after {
-    bottom: -150px;
-    right: -150px;
-    background: #0f7c82;
+    background: #0b1220;
+    color: #e2e8f0;
 }
 
 /* NAVBAR */
 .navbar {
     position: sticky;
     top: 0;
-    background: #0f7c82;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     padding: 15px 30px;
-}
-
-.nav-logo {
-    height: 40px;
 }
 
 /* CONTAINER */
 .container {
     max-width: 1100px;
     margin: auto;
-    padding: 50px 20px;
-    display: flex;
-    align-items: center;
-    gap: 60px;
+    padding: 100px 20px;
 }
 
 /* HERO */
 .hero {
-    min-height: 70vh;
+    background: radial-gradient(circle at 30% 20%, #19a7b3, transparent 40%),
+        radial-gradient(circle at 80% 80%, #0f7c82, transparent 40%);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
 }
 
 .hero-text h1 {
-    font-size: 56px;
+    font-size: 64px;
     font-weight: 900;
     line-height: 1.05;
-    letter-spacing: -1.5px;
 }
 
-.hero-text h1 span {
-    background: linear-gradient(90deg, #0f7c82, #19a7b3);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.hero-text span {
+    color: #19a7b3;
 }
 
 .hero-text p {
-    font-size: 20px;
-    color: #475569;
     margin: 20px 0;
+    font-size: 20px;
+    color: #94a3b8;
 }
 
-/* BOTONES */
+/* BUTTON */
 .btn {
-    background: white;
-    color: #0f7c82;
     padding: 15px 25px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s;
 }
 
-.btn.conte {
-    background: #0f7c82;
+.primary {
+    background: linear-gradient(135deg, #19a7b3, #0f7c82);
     color: white;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(25, 167, 179, 0.4);
 }
 
 /* PHONE */
@@ -106,10 +74,30 @@ body::after {
     border-radius: 40px;
     padding: 12px;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-/* NOTCH (SIEMPRE ENCIMA) */
+.card {
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* FLOATING EFFECT */
+.floating {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* NOTCH */
 .phone::before {
     content: "";
     position: absolute;
@@ -121,15 +109,13 @@ body::after {
     background: #111;
     border-radius: 20px;
     z-index: 10;
-    /* 🔥 SOLUCIÓN */
 }
 
-/* BOTONES LATERALES */
+/* BUTTONS */
 .btn-side {
     position: absolute;
     width: 4px;
     background: #222;
-    border-radius: 4px;
 }
 
 .btn-power {
@@ -144,27 +130,33 @@ body::after {
     top: 100px;
 }
 
-/* PANTALLA */
+/* SCREEN */
 .screen {
     width: 100%;
     height: 100%;
     border-radius: 30px;
     overflow: hidden;
-    position: relative;
-    z-index: 1;
 }
 
 .screen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.5s ease;
 }
 
 /* SECTIONS */
 .section {
+    background: #0f172a;
+}
+
+.alt {
+    background: #020617;
+}
+
+.feature {
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    align-items: center;
+    gap: 60px;
 }
 
 .reverse {
@@ -173,41 +165,42 @@ body::after {
 
 /* TEXT */
 .text h2 {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 800;
 }
 
 .text p {
+    color: #94a3b8;
     font-size: 18px;
-    color: #64748b;
-    line-height: 1.6;
 }
 
 /* CTA */
 .cta {
-    background: #0f7c82;
-    color: white;
+    background: linear-gradient(135deg, #19a7b3, #0f7c82);
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
 }
 
 .cta h2 {
-    font-size: 36px;
+    font-size: 42px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-    .container {
+
+    .hero-grid,
+    .feature {
+        grid-template-columns: 1fr;
         flex-direction: column;
         text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
     }
 
     .phone {
         width: 220px;
         height: 440px;
-    }
-
-    .hero-text h1 {
-        font-size: 36px;
     }
 }
