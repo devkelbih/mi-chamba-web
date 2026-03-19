@@ -1,6 +1,4 @@
-// ===============================
-// CARRUSEL HERO (MEJORADO)
-// ===============================
+// ================= CAROUSEL SUAVE =================
 const images = [
     "assets/images/calendario.jpg",
     "assets/images/registro.jpg",
@@ -10,65 +8,51 @@ const images = [
 
 let index = 0;
 const carousel = document.getElementById("carousel");
-let interval;
 
-// animación suave
 function changeImage() {
     index = (index + 1) % images.length;
 
     carousel.style.opacity = 0;
-    carousel.style.transform = "scale(0.95)";
 
     setTimeout(() => {
         carousel.src = images[index];
         carousel.style.opacity = 1;
-        carousel.style.transform = "scale(1)";
-    }, 350);
+    }, 300);
 }
 
-// autoplay inteligente (pausa si no estás en la pestaña)
-function startCarousel() {
-    interval = setInterval(changeImage, 3500);
-}
-
-function stopCarousel() {
-    clearInterval(interval);
-}
-
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        stopCarousel();
-    } else {
-        startCarousel();
-    }
-});
-
-startCarousel();
+setInterval(changeImage, 3500);
 
 
-// ===============================
-// ANIMACIÓN SCROLL PRO
-// ===============================
-const elements = document.querySelectorAll(".section");
+// ================= TILT =================
+document.querySelectorAll(".tilt").forEach(el => {
+    el.addEventListener("mousemove", e => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = "translateY(0)";
-        } else {
-            // vuelve a ocultarse (más dinámico)
-            entry.target.style.opacity = 0;
-            entry.target.style.transform = "translateY(60px)";
-        }
+        const rotateX = ((y / rect.height) - 0.5) * -8;
+        const rotateY = ((x / rect.width) - 0.5) * 8;
+
+        el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
-}, {
-    threshold: 0.2
+
+    el.addEventListener("mouseleave", () => {
+        el.style.transform = "rotateX(0) rotateY(0)";
+    });
 });
 
-elements.forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = "translateY(60px)";
-    el.style.transition = "all 0.9s cubic-bezier(0.22, 1, 0.36, 1)";
-    observer.observe(el);
+
+// ================= MAGNET BUTTON =================
+document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("mousemove", e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    });
+
+    btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "translate(0,0)";
+    });
 });
