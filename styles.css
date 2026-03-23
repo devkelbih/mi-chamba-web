@@ -10,18 +10,15 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-
     background: rgba(15, 23, 42, 0.7);
     backdrop-filter: blur(12px);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 10px 25px;
 }
 
-/* NAV LEFT */
+/* NAV */
 .nav-left {
     display: flex;
     align-items: center;
@@ -36,7 +33,6 @@ body {
     font-weight: 600;
 }
 
-/* NAV LINKS */
 .nav-links {
     display: flex;
     gap: 25px;
@@ -62,9 +58,6 @@ body {
 
 /* HERO */
 .hero {
-    position: relative;
-    z-index: 1;
-
     background: radial-gradient(circle at 30% 20%, #19a7b3, transparent 40%),
         radial-gradient(circle at 80% 80%, #0f7c82, transparent 40%);
 }
@@ -77,39 +70,34 @@ body {
     gap: 60px;
 }
 
-/* HERO BRAND */
-.hero-brand img {
-    width: 280px;
-    margin-bottom: 20px;
-}
-
 /* TEXT */
 .hero-text h1 {
     font-size: 58px;
     font-weight: 900;
 }
 
-.hero-text span {
-    color: #19a7b3;
-}
-
 .hero-text p {
     font-size: 18px;
-    color: #94a3b8;
+    color: #cbd5f5;
 }
 
-/* BUTTON (UNIFICADO) */
+.micro-copy {
+    display: block;
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* BUTTON */
 .btn {
     display: inline-block;
     padding: 14px 24px;
-    border-radius: 12px;
+    border-radius: 14px;
     font-weight: 600;
     text-decoration: none;
     color: white;
-
     background: linear-gradient(135deg, #19a7b3, #0f7c82);
     box-shadow: 0 10px 30px rgba(25, 167, 179, 0.4);
-
     transition: all 0.25s ease;
 }
 
@@ -117,88 +105,142 @@ body {
     transform: translateY(-2px) scale(1.02);
 }
 
-/* PHONE */
+/* BOTÓN CON BORDE */
+.btn-outline {
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    transition: border-color 0.25s ease;
+}
+
+.btn-outline:hover {
+    border-color: white;
+}
+
+/* PROBLEM */
+.problem {
+    background: #020617;
+    text-align: center;
+}
+
+.problem ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.problem li {
+    margin: 10px 0;
+    color: #94a3b8;
+}
+
+/* ================= PHONE PRO ================= */
+
 .phone {
     width: 280px;
     height: 560px;
-    background: #000;
-    border-radius: 40px;
-    padding: 12px;
+    background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+    border-radius: 34px;
+    padding: 8px;
     position: relative;
 
-    z-index: 2;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 
     box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
+        0 40px 100px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(25, 167, 179, 0.18),
+        inset 0 0 10px rgba(255, 255, 255, 0.03);
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* FLOAT */
-.floating {
-    animation: float 4s ease-in-out infinite;
+/* HOVER LIMPIO */
+.phone:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 50px 120px rgba(0, 0, 0, 1),
+        0 0 60px rgba(25, 167, 179, 0.25);
 }
 
-@keyframes float {
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* TILT */
-.tilt {
-    transform-style: preserve-3d;
-    transition: transform 0.2s ease;
-}
-
-/* NOTCH */
+/* LUZ SUPERIOR */
 .phone::before {
     content: "";
     position: absolute;
-    top: 12px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90px;
-    height: 8px;
-    background: #111;
-    border-radius: 20px;
-    z-index: 10;
-}
-
-/* SIDE BUTTONS */
-.btn-side {
-    position: absolute;
-    width: 4px;
-    background: #222;
-}
-
-.btn-power {
-    height: 60px;
-    right: -6px;
-    top: 120px;
-}
-
-.btn-volume {
+    width: 160px;
     height: 80px;
-    left: -6px;
-    top: 100px;
+
+    background: radial-gradient(ellipse at center,
+            rgba(255, 255, 255, 0.18),
+            transparent 70%);
+
+    filter: blur(16px);
+}
+
+/* PROFUNDIDAD */
+.phone::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 34px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
 /* SCREEN */
 .screen {
     width: 100%;
     height: 100%;
-    border-radius: 30px;
+    border-radius: 26px;
     overflow: hidden;
+    position: relative;
 }
 
+/* IMAGEN */
 .screen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 1s ease;
+}
 
-    transition: opacity 0.6s ease, transform 0.6s ease;
+/* EFECTO VIDRIO */
+.screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 26px;
+
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0.08),
+            transparent 40%,
+            transparent 60%,
+            rgba(255, 255, 255, 0.05));
+}
+
+/* BOTONES LATERALES */
+.btn-side {
+    position: absolute;
+    width: 4px;
+    border-radius: 6px;
+    background: linear-gradient(to bottom, #555, #222);
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.8),
+        0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.btn-power {
+    height: 65px;
+    right: -6px;
+    top: 120px;
+}
+
+.btn-volume {
+    height: 90px;
+    left: -6px;
+    top: 100px;
 }
 
 /* SECTIONS */
@@ -236,12 +278,16 @@ body {
     padding: 100px 20px;
 }
 
+.cta-sub {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
 
     .hero-grid,
     .feature {
-        display: flex;
         flex-direction: column;
         text-align: center;
     }

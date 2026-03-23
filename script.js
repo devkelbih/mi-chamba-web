@@ -1,4 +1,5 @@
-// ================= CAROUSEL SUAVE =================
+// ================= CAROUSEL SUAVE PRO =================
+
 const images = [
     "assets/images/calendario.jpg",
     "assets/images/registro.jpg",
@@ -10,39 +11,24 @@ let index = 0;
 const carousel = document.getElementById("carousel");
 
 function changeImage() {
-    index = (index + 1) % images.length;
-
+    // fade out
     carousel.style.opacity = 0;
 
     setTimeout(() => {
+        index = (index + 1) % images.length;
         carousel.src = images[index];
+
+        // fade in
         carousel.style.opacity = 1;
-    }, 300);
+    }, 800); // más lento y elegante
 }
 
-setInterval(changeImage, 3500);
-
-
-// ================= TILT =================
-document.querySelectorAll(".tilt").forEach(el => {
-    el.addEventListener("mousemove", e => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const rotateX = ((y / rect.height) - 0.5) * -8;
-        const rotateY = ((x / rect.width) - 0.5) * 8;
-
-        el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    el.addEventListener("mouseleave", () => {
-        el.style.transform = "rotateX(0) rotateY(0)";
-    });
-});
+// 🔥 más tiempo visible (se siente premium)
+setInterval(changeImage, 5000);
 
 
 // ================= MAGNET BUTTON =================
+
 document.querySelectorAll(".btn").forEach(btn => {
     btn.addEventListener("mousemove", e => {
         const rect = btn.getBoundingClientRect();
