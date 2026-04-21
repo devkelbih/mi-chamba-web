@@ -81,13 +81,14 @@ body {
 }
 
 .hero-title {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
 }
 
 .hero-subtitle {
     font-size: 13px;
-    color: #94a3b8;
+    color: #525252;
 }
 
 /* GRID */
