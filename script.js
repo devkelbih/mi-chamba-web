@@ -3,8 +3,12 @@
 const images = [
     "assets/images/calendario.jpg",
     "assets/images/registro.jpg",
+    "assets/images/agrega-trabajo.jpg",
     "assets/images/resumen.jpg",
-    "assets/images/catalogo.jpg"
+    "assets/images/paga-semana.jpg",
+    "assets/images/catalogo.jpg",
+    "assets/images/edita-catalogo.jpg",
+    "assets/images/oscuro.jpg"
 ];
 
 let index = 0;
