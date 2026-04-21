@@ -126,12 +126,9 @@ body {
     color: white;
     background: linear-gradient(135deg, #19a7b3, #0f7c82);
     box-shadow: 0 10px 30px rgba(25, 167, 179, 0.4);
-    transition: all 0.25s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn:hover {
-    transform: translateY(-2px) scale(1.02);
-}
 
 /* BOTÓN CON BORDE */
 .btn-outline {
@@ -228,7 +225,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 1s ease;
+    transition: opacity 0.5s ease;
 }
 
 /* EFECTO VIDRIO */
